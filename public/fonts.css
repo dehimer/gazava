@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "CoreSansLight";
+    src: url("/fonts/Core Sans N 35 Light.ttf") format("truetype"), /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: "CoreSansBold";
+    src: url("/fonts/Core Sans N 65 Bold.ttf") format("truetype"), /* Safari, Android, iOS */
+}
