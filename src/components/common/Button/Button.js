@@ -13,7 +13,7 @@ export default Button;
 
 const Wrapper = styled.div`
   cursor: pointer;
-  padding: 10px;
+  padding: 20px;
   background-color: crimson;
   width: 140px;
   text-align: center;

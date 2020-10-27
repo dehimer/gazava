@@ -8,6 +8,7 @@ import Logotypes from "./Logotypes";
 
 import i18n from "../../constants/i18n";
 import data from "../../data.json";
+import Header from "../common/Header";
 
 const Start = () => {
   const roads = React.useMemo(() => data.roads, []);
@@ -58,13 +59,12 @@ const Panel = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.5);  
 `;
 
-const Question = styled.div`
-  color: #333;
-  font-size: 26px;
-  
-  padding: 20px;
+const Question = styled(Header)`
+  text-align: center;
   margin-bottom: 20px;
+  width: 700px;
 `;
