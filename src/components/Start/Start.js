@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Roads from "../Roads";
 import Button from "../common/Button";
 import Background from "./Background";
+import Logotypes from "./Logotypes";
 
 import i18n from "../../constants/i18n";
 import data from "../../data.json";
@@ -21,14 +22,17 @@ const Start = () => {
   return (
     <Wrapper>
       <Background finished={finished} />
-      {started
-        ? <Roads roads={roads} />
-        : (
-          <Button onClick={handleStartClick}>
-            {i18n.start}
-          </Button>
-        )
-      }
+      <Panel>
+        {started
+          ? <Roads roads={roads} />
+          : (
+            <Button onClick={handleStartClick}>
+              {i18n.start}
+            </Button>
+          )
+        }
+      </Panel>
+      <Logotypes />
     </Wrapper>
   )
 }
@@ -36,11 +40,20 @@ const Start = () => {
 export default Start
 
 const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
+`;
+
+const Panel = styled.div`
+  position: absolute;
+  min-height: 50vh;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  height: 100%;
-  width: 100%;
+  backdrop-filter: blur(15px);
 `;
