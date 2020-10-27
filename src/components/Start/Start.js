@@ -26,9 +26,12 @@ const Start = () => {
         {started
           ? <Roads roads={roads} />
           : (
-            <Button onClick={handleStartClick}>
-              {i18n.start}
-            </Button>
+            <>
+              <Question>{i18n["start-screen-label"]}</Question>
+              <Button onClick={handleStartClick}>
+                {i18n.start}
+              </Button>
+            </>
           )
         }
       </Panel>
@@ -56,4 +59,12 @@ const Panel = styled.div`
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(15px);
+`;
+
+const Question = styled.div`
+  color: #333;
+  font-size: 26px;
+  
+  padding: 20px;
+  margin-bottom: 20px;
 `;

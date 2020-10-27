@@ -15,7 +15,8 @@ const Wrapper = styled.div`
   cursor: pointer;
   padding: 10px;
   background-color: crimson;
-  width: 100px;
+  width: 140px;
   text-align: center;
   color: white;
+  font-size: 20px;
 `;
