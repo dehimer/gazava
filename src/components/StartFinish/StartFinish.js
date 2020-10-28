@@ -36,6 +36,8 @@ const StartFinish = () => {
     }
   }, []);
 
+  const [videoRef, setVideoRef] = React.useState(null);
+
   const handleStartClick = () => {
     setStarted(true);
     setFinished(false);
@@ -53,6 +55,9 @@ const StartFinish = () => {
   return (
     <Wrapper>
       <Background finished={finished} />
+      <VideoWrapper>
+        <video ref={setVideoRef} />
+      </VideoWrapper>
       <Version>M-RU-00001112 октябрь 2020</Version>
       { portraitView && (
         <FullScreenPanel>
@@ -68,6 +73,7 @@ const StartFinish = () => {
               finished={finished}
               onFinish={handleFinishClick}
               onRestart={handleRestartClick}
+              videoRef={videoRef}
             />
           )
           : (
@@ -135,4 +141,21 @@ const FullScreenPanel = styled(Panel)`
   height: 100%;
   width: 100%;
   z-index: 1;
+`;
+
+const VideoWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  
+  video {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    
+    opacity: 0;
+    transition: opacity 1s;
+  }
 `;

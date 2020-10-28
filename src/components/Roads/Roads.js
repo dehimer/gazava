@@ -12,7 +12,8 @@ const Roads = ({
   roads,
   finished,
   onFinish,
-  onRestart
+  onRestart,
+  videoRef
 }) => {
   const [road, setRoad] = React.useState(null);
 
@@ -31,7 +32,13 @@ const Roads = ({
       <Wrapper>
         {
           road
-            ? <Road road={road} onFinish={onFinish} />
+            ? (
+              <Road
+                road={road}
+                onFinish={onFinish}
+                videoRef={videoRef}
+              />
+            )
             : (
               <RoadSelect
                 roads={roads}

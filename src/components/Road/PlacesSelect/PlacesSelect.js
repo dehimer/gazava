@@ -12,10 +12,14 @@ const PlacesSelect = ({
   places,
   onSelect,
   buttonText = i18n.start,
-  children
+  children,
+  buttonDisabled = false
 }) => {
   const [selected, setSelected] = React.useState([]);
-  const disabled = React.useMemo(() => selected.length === 0, [selected]);
+  const disabled = React.useMemo(
+    () => selected.length === 0 || buttonDisabled,
+    [selected, buttonDisabled]
+  );
   const handleSelect = (index) => () => {
     setSelected((prevSelected) => {
       if (prevSelected.includes(index)) {
@@ -46,7 +50,10 @@ const PlacesSelect = ({
         }
       </CheckboxesWrapper>
       <Controls>
-        <Button onClick={handleStartClick} disabled={disabled}>
+        <Button
+          onClick={handleStartClick}
+          disabled={disabled}
+        >
           {buttonText}
         </Button>
         {children}

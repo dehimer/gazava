@@ -36,7 +36,6 @@ const Places = ({
   const handleNextClick = () => {
     const [place, ...leftPlaces] = places;
     setPlaces(leftPlaces);
-    // setLastPlace(place);
     setVisitedPlaces([...visitedPlaces, place]);
     setUnvisitedPlaces(unvisitedPlaces.filter(unvisitedPlace => unvisitedPlace.id !== place.id));
   }
@@ -46,7 +45,6 @@ const Places = ({
       !additionalPlaces.map(place => place.id).includes(id)
     ));
     setPlaces(additionalPlaces);
-    // setLastPlace(additionalPlaces[0]);
     setLeftAttempt(leftAttempt - 1);
   }
 
