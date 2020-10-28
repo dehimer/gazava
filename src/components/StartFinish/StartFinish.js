@@ -12,6 +12,10 @@ import Logotypes from "./Logotypes";
 import Panel from "../common/Panel";
 import Header from "../common/Header";
 
+import {
+  VIDEO_PAUSE_EVENT, VIDEO_PLAY_EVENT
+} from "../../constants/events";
+
 const RESIZE_EVENT = "resize";
 
 const StartFinish = () => {
@@ -20,6 +24,7 @@ const StartFinish = () => {
   const [finished, setFinished] = React.useState(false);
 
   const [portraitView, setPortraitView] = React.useState(false);
+  const [hideLogo, setHideLogo] = React.useState(false);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -37,6 +42,28 @@ const StartFinish = () => {
   }, []);
 
   const [videoRef, setVideoRef] = React.useState(null);
+
+  React.useEffect(() => {
+    console.log(videoRef);
+    const handlePlay = () => {
+      setHideLogo(true);
+    };
+    const handlePause = () => {
+      setHideLogo(false);
+    };
+
+    if (videoRef) {
+      videoRef.addEventListener(VIDEO_PLAY_EVENT, handlePlay);
+      videoRef.addEventListener(VIDEO_PAUSE_EVENT, handlePause);
+    }
+
+    return () => {
+      if (videoRef) {
+        videoRef.removeEventListener(VIDEO_PLAY_EVENT, handlePlay);
+        videoRef.removeEventListener(VIDEO_PAUSE_EVENT, handlePause);
+      }
+    };
+  }, [videoRef]);
 
   const handleStartClick = () => {
     setStarted(true);
@@ -91,7 +118,7 @@ const StartFinish = () => {
             </>
           )
         }
-      <Logotypes />
+      {!hideLogo && <Logotypes/>}
     </Wrapper>
   )
 }

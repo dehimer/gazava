@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import PlacesSelect from "./PlacesSelect";
 import Places from "./Places";
+import { VIDEO_CANPLAYTHROUGH_EVENT } from "../../constants/events";
 
 const Road = ({
   road,
@@ -26,7 +27,7 @@ const Road = ({
       videoRef.style.opacity = 1;
       setDisabled(false);
     };
-    videoRef.addEventListener("canplaythrough", handleCanPlay);
+    videoRef.addEventListener(VIDEO_CANPLAYTHROUGH_EVENT, handleCanPlay);
 
     if (road) {
       videoRef.setAttribute("src", `./videos/${road.src}`);
@@ -34,7 +35,7 @@ const Road = ({
 
     return () => {
       videoRef.pause();
-      videoRef.removeEventListener("canplaythrough", handleCanPlay);
+      videoRef.removeEventListener(VIDEO_CANPLAYTHROUGH_EVENT, handleCanPlay);
       videoRef.style.opacity = 0;
     }
   }, [road, videoRef]);

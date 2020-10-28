@@ -7,8 +7,9 @@ import Place from "./Place";
 import End from "./End";
 import AdditionalPlacesSelect from "./AdditionPlacesSelect";
 
+import { VIDEO_TIME_UPDATE_EVENT } from "../../../constants/events";
+
 const ATTEMPTS_ALLOWED = 2;
-const TIME_UPDATE_EVENT = "timeupdate";
 
 const Places = ({
   road,
@@ -27,38 +28,41 @@ const Places = ({
   const [places, setPlaces] = React.useState(selectedPlaces);
   const [lastPlace, setLastPlace] = React.useState(places[0]);
 
-  const [timeForNextAppear, setTimeForNextAppear] = React.useState(-1);
+  const timeForNextAppear = React.useRef(-1);
   const [leftAttempt, setLeftAttempt] = React.useState(ATTEMPTS_ALLOWED);
 
   React.useEffect(() => {
     if (places.length) {
       setLastPlace(places[0]);
-      setTimeForNextAppear(places[0].timing);
+      console.log(places[0]);
+      timeForNextAppear.current = places[0].timing;
     }
   }, [places])
 
   React.useEffect(() => {
     const handleTimeupdate = () => {
-      // console.log(`handleTimeupdate ${videoRef.currentTime} > ${timeForNextAppear}`);
-      if (timeForNextAppear > 0 && videoRef.currentTime > timeForNextAppear) {
-        // console.log("pause");
+      console.log(`handleTimeupdate ${videoRef.currentTime} > ${timeForNextAppear.current}`);
+      if (timeForNextAppear.current > 0 && videoRef.currentTime > timeForNextAppear.current) {
+        console.log("pause");
+        timeForNextAppear.current = -1;
         videoRef.pause();
-        setTimeForNextAppear(-1);
       }
     }
-    videoRef.addEventListener(TIME_UPDATE_EVENT, handleTimeupdate, false);
+    videoRef.addEventListener(VIDEO_TIME_UPDATE_EVENT, handleTimeupdate, false);
 
     return () => {
-      videoRef.removeEventListener(TIME_UPDATE_EVENT, handleTimeupdate, false);
+      videoRef.removeEventListener(VIDEO_TIME_UPDATE_EVENT, handleTimeupdate, false);
     }
-  }, [timeForNextAppear, videoRef])
+  }, [videoRef])
 
   const handleNextClick = () => {
     const [place, ...leftPlaces] = places;
     setPlaces(leftPlaces);
     setVisitedPlaces([...visitedPlaces, place]);
     setUnvisitedPlaces(unvisitedPlaces.filter(unvisitedPlace => unvisitedPlace.id !== place.id));
-    videoRef.play();
+    if (leftPlaces.length > 0) {
+      videoRef.play();
+    }
   }
 
   const handleAdditionalPlacesSelect = (additionalPlaces) => {
