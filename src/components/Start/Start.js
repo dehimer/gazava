@@ -60,7 +60,8 @@ const Panel = styled.div`
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.5);  
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 10px;  
 `;
 
 const Question = styled(Header)`

@@ -43,8 +43,13 @@ const RoadsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 10px;
-  min-width: 1000px;
-  max-width: 100vw;
+  width: 1000px;
+  max-width: 100%;
+  
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const StyledHeader = styled(Header)`
