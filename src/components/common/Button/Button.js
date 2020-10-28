@@ -7,11 +7,15 @@ const Button = ({
   onClick,
   selected = false,
   children,
-  className
+  className,
+  disabled = false
 }) => {
   const [clicked, setClicked] = React.useState(false);
   const timeoutF = React.useRef(0);
   const handleClick = () => {
+    if (disabled) {
+      return;
+    }
     setClicked(true);
 
     clearTimeout(timeoutF.current);
@@ -25,6 +29,7 @@ const Button = ({
     <Wrapper
       onClick={handleClick}
       selected={selected || clicked}
+      disabled={disabled}
       className={className}
     >
       {children}
@@ -35,7 +40,8 @@ const Button = ({
 export default Button;
 
 const Wrapper = styled.div`
-  cursor: pointer;
+  cursor: ${({ disabled }) => disabled ? "cursor" : "pointer"};
+  opacity: ${({ disabled }) => disabled ? "0.5" : "1"};
   padding: 20px;
   background-color: ${({ selected }) => selected ? "crimson" : "#333"};
   width: 140px;

@@ -9,6 +9,7 @@ import i18n from "../../../constants/i18n";
 
 const StoppingPlacesSelect = ({ places, onSelect }) => {
   const [selected, setSelected] = React.useState([]);
+  const disabled = React.useMemo(() => selected.length === 0, [selected]);
   const handleSelect = (index) => () => {
     console.log(`handleSelect ${index}`);
     setSelected((prevSelected) => {
@@ -39,7 +40,7 @@ const StoppingPlacesSelect = ({ places, onSelect }) => {
           ))
         }
       </CheckboxesWrapper>
-      <Button onClick={handleStartClick}>
+      <Button onClick={handleStartClick} disabled={disabled}>
         {i18n["start"]}
       </Button>
     </Wrapper>
