@@ -1,25 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 
-import Header from "../common/Header";
 import RoadSelect from "./RoadSelect";
 import Road from "../Road";
 
-import i18n from "../../constants/i18n";
 
-const Roads = ({ roads }) => {
+const Roads = ({ finished, onFinish, roads }) => {
   const [road, setRoad] = React.useState(null);
-  const [stages, setStages] = React.useState(null);
 
   const handleRoadSelect = (road) => {
     setRoad(road);
+  }
+
+  if (finished) {
+    return (
+      <div>
+        FINISHED
+      </div>
+    )
   }
 
   return (
     <Wrapper>
       {
         road
-          ? <Road road={road} />
+          ? <Road road={road} onFinish={onFinish} />
           : (
             <RoadSelect
               roads={roads}

@@ -1,12 +1,12 @@
 import './App.css';
 import React from "react";
 
-import Start from "./components/Start";
+import StartFinish from "./components/StartFinish";
 
 function App() {
   return (
     <div className="App">
-      <Start />
+      <StartFinish />
     </div>
   );
 }

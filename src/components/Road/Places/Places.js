@@ -12,7 +12,8 @@ const ATTEMPTS_ALLOWED = 2;
 const Places = ({
   road,
   selectedPlaces,
-  allPlaces
+  allPlaces,
+  onFinish
 }) => {
   const [visitedPlaces, setVisitedPlaces] = React.useState([]);
   const [unvisitedPlaces, setUnvisitedPlaces] = React.useState(
@@ -25,8 +26,6 @@ const Places = ({
   const [lastPlace, setLastPlace] = React.useState(places[0]);
 
   const [leftAttempt, setLeftAttempt] = React.useState(ATTEMPTS_ALLOWED);
-
-  const [showPlacesSelect, setShowPlacesSelect] = React.useState(false);
 
   const handleNextClick = () => {
     const [place, ...leftPlaces] = places;
@@ -44,10 +43,6 @@ const Places = ({
     setLeftAttempt(leftAttempt - 1);
   }
 
-  const handleFinishClick = () => {
-    console.log("handleFinishClick");
-  }
-
   return (
     <Wrapper>
       <StyledLabel>
@@ -60,7 +55,7 @@ const Places = ({
               ? (
                 <End
                   caption={road.question4}
-                  onFinishClick={handleFinishClick}
+                  onFinishClick={onFinish}
                 />
               )
               : (
@@ -72,7 +67,7 @@ const Places = ({
                   }
                   unvisitedPlaces={unvisitedPlaces}
                   onSelect={handleAdditionalPlacesSelect}
-                  onFinishClick={handleFinishClick}
+                  onFinishClick={onFinish}
                 />
               )
           )

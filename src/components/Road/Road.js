@@ -4,7 +4,7 @@ import styled from "styled-components";
 import PlacesSelect from "./PlacesSelect";
 import Places from "./Places";
 
-const Road = ({ road }) => {
+const Road = ({ road, onFinish }) => {
   const [driving, setDriving] = React.useState(false);
   const [stoppingPlaces, setStoppingPlaces] = React.useState([]);
   const places = road.stages;
@@ -23,6 +23,7 @@ const Road = ({ road }) => {
               road={road}
               allPlaces={places}
               selectedPlaces={stoppingPlaces}
+              onFinish={onFinish}
             />
           )
           : (
