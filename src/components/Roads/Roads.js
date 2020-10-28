@@ -1,11 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-import RoadSelect from "./RoadSelect";
+import Header from "../common/Header";
+
+import Finish from "../Finish";
 import Road from "../Road";
+import RoadSelect from "./RoadSelect";
 
 
-const Roads = ({ finished, onFinish, roads }) => {
+const Roads = ({
+  roads,
+  finished,
+  onFinish,
+  onRestart
+}) => {
   const [road, setRoad] = React.useState(null);
 
   const handleRoadSelect = (road) => {
@@ -14,10 +22,8 @@ const Roads = ({ finished, onFinish, roads }) => {
 
   if (finished) {
     return (
-      <div>
-        FINISHED
-      </div>
-    )
+      <Finish road={road} onRestart={onRestart} />
+    );
   }
 
   return (

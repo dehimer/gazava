@@ -24,6 +24,11 @@ const StartFinish = () => {
     setFinished(true);
   }
 
+  const handleRestartClick = () => {
+    setStarted(false);
+    setFinished(false);
+  }
+
   return (
     <Wrapper>
       <Background finished={finished} />
@@ -34,6 +39,7 @@ const StartFinish = () => {
               roads={roads}
               finished={finished}
               onFinish={handleFinishClick}
+              onRestart={handleRestartClick}
             />
           )
           : (

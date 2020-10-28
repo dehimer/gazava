@@ -10,6 +10,7 @@ const i18n = {
   "additional-places-select_caption": "Продолжаем движение?",
   "additional-places-select_caption-second": "Выбрать следующий аспект/аспекты:",
   "select-another-options": "Выберите другие опции",
+  "select-another-patient": "Выбрать другого пациента",
 };
 
 export default i18n;
