@@ -20,6 +20,7 @@ const Road = ({
     setDriving(true);
   };
 
+
   React.useEffect(() => {
     const handleCanPlay = () => {
       videoRef.style.opacity = 1;
@@ -48,6 +49,7 @@ const Road = ({
               allPlaces={places}
               selectedPlaces={stoppingPlaces}
               onFinish={onFinish}
+              videoRef={videoRef}
             />
           )
           : (

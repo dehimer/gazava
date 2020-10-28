@@ -8,12 +8,14 @@ import End from "./End";
 import AdditionalPlacesSelect from "./AdditionPlacesSelect";
 
 const ATTEMPTS_ALLOWED = 2;
+const TIME_UPDATE_EVENT = "timeupdate";
 
 const Places = ({
   road,
   selectedPlaces,
   allPlaces,
-  onFinish
+  onFinish,
+  videoRef
 }) => {
   const [visitedPlaces, setVisitedPlaces] = React.useState([]);
   const [unvisitedPlaces, setUnvisitedPlaces] = React.useState(
@@ -32,6 +34,20 @@ const Places = ({
       setLastPlace(places[0]);
     }
   }, [places])
+
+  const tick = React.useRef(0);
+
+  React.useEffect(() => {
+    const handleTimeupdate = () => {
+      tick.current++;
+      console.log(`handleTimeupdate ${tick.current}`);
+    }
+    videoRef.addEventListener(TIME_UPDATE_EVENT, handleTimeupdate, false);
+
+    return () => {
+      videoRef.removeEventListener(TIME_UPDATE_EVENT, handleTimeupdate, false);
+    }
+  }, [videoRef])
 
   const handleNextClick = () => {
     const [place, ...leftPlaces] = places;
