@@ -28,23 +28,24 @@ const Places = ({
   const [places, setPlaces] = React.useState(selectedPlaces);
   const [lastPlace, setLastPlace] = React.useState(places[0]);
 
-  const [timeForNextAppear, setTimeForNextAppear] = React.useState(-1);
+  const timeForNextAppear = React.useRef(-1);
   const [leftAttempt, setLeftAttempt] = React.useState(ATTEMPTS_ALLOWED);
 
   React.useEffect(() => {
     if (places.length) {
       setLastPlace(places[0]);
-      setTimeForNextAppear(places[0].timing);
+      console.log(places[0]);
+      timeForNextAppear.current = places[0].timing;
     }
   }, [places])
 
   React.useEffect(() => {
     const handleTimeupdate = () => {
-      // console.log(`handleTimeupdate ${videoRef.currentTime} > ${timeForNextAppear}`);
-      if (timeForNextAppear > 0 && videoRef.currentTime > timeForNextAppear) {
-        // console.log("pause");
+      console.log(`handleTimeupdate ${videoRef.currentTime} > ${timeForNextAppear.current}`);
+      if (timeForNextAppear.current > 0 && videoRef.currentTime > timeForNextAppear.current) {
+        console.log("pause");
+        timeForNextAppear.current = -1;
         videoRef.pause();
-        setTimeForNextAppear(-1);
       }
     }
     videoRef.addEventListener(VIDEO_TIME_UPDATE_EVENT, handleTimeupdate, false);
@@ -52,7 +53,7 @@ const Places = ({
     return () => {
       videoRef.removeEventListener(VIDEO_TIME_UPDATE_EVENT, handleTimeupdate, false);
     }
-  }, [timeForNextAppear, videoRef])
+  }, [videoRef])
 
   const handleNextClick = () => {
     const [place, ...leftPlaces] = places;

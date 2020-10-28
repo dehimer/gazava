@@ -27,12 +27,6 @@ const StartFinish = () => {
   const [hideLogo, setHideLogo] = React.useState(false);
 
   React.useEffect(() => {
-    const handlePlay = () => {
-      setHideLogo(false);
-    };
-    const handlePause = () => {
-      setHideLogo(true);
-    };
     const handleResize = () => {
       const aspectRatio = window.innerHeight/window.innerWidth;
       setPortraitView(aspectRatio > 1);
@@ -40,18 +34,36 @@ const StartFinish = () => {
 
     handleResize();
 
-    window.addEventListener(VIDEO_PLAY_EVENT, handlePlay);
-    window.addEventListener(VIDEO_PAUSE_EVENT, handlePause);
     window.addEventListener(RESIZE_EVENT, handleResize);
 
     return () => {
-      window.removeEventListener(VIDEO_PLAY_EVENT, handlePlay);
-      window.removeEventListener(VIDEO_PAUSE_EVENT, handlePause);
       window.removeEventListener(RESIZE_EVENT, handleResize);
     }
   }, []);
 
   const [videoRef, setVideoRef] = React.useState(null);
+
+  React.useEffect(() => {
+    console.log(videoRef);
+    const handlePlay = () => {
+      setHideLogo(true);
+    };
+    const handlePause = () => {
+      setHideLogo(false);
+    };
+
+    if (videoRef) {
+      videoRef.addEventListener(VIDEO_PLAY_EVENT, handlePlay);
+      videoRef.addEventListener(VIDEO_PAUSE_EVENT, handlePause);
+    }
+
+    return () => {
+      if (videoRef) {
+        videoRef.removeEventListener(VIDEO_PLAY_EVENT, handlePlay);
+        videoRef.removeEventListener(VIDEO_PAUSE_EVENT, handlePause);
+      }
+    };
+  }, [videoRef]);
 
   const handleStartClick = () => {
     setStarted(true);
