@@ -62,6 +62,6 @@ const StyledHeader = styled(Header)`
   font-size: 30px;
 
   @media (max-width: 850px) {
-    font-size: 20px;
+    font-size: 14px;
   }
 `;
