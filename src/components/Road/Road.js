@@ -21,7 +21,7 @@ const Road = ({ road }) => {
           ? (
             <Places
               allPlaces={places}
-              initiallyLeftPlaces={stoppingPlaces}
+              selectedPlaces={stoppingPlaces}
             />
           )
           : (

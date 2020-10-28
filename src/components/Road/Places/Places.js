@@ -1,38 +1,53 @@
 import React from "react";
 import styled from "styled-components";
 
-import i18n from "../../../constants/i18n";
-
-import Header from "../../common/Header";
-import Button from "../../common/Button";
 import Label from "../../common/Label";
 
+import Place from "./Place";
+
+const ATTEMPTS_ALLOWED = 2;
+
 const Places = ({
-  initiallyLeftPlaces,
+  selectedPlaces,
   allPlaces
 }) => {
-  const [currentPlaceIndex, setCurrentPlaceIndex] = React.useState(0);
   const [visitedPlaces, setVisitedPlaces] = React.useState([]);
-  const [leftPlaces, setLeftPlaces] = React.useState(initiallyLeftPlaces);
-  const currentPlace = leftPlaces[currentPlaceIndex];
+  const [unvisitedPlaces, setUnvisitedPlaces] = React.useState(allPlaces.map(({ id }) => id));
+
+  const [places, setPlaces] = React.useState(selectedPlaces);
+  const [lastPlace, setLastPlace] = React.useState(places[0]);
+
+  const [leftAttempt, setLeftAttempt] = React.useState(ATTEMPTS_ALLOWED);
+
+  const [showPlacesSelect, setShowPlacesSelect] = React.useState(false);
 
   const handleNextClick = () => {
-    if (currentPlaceIndex === leftPlaces.length) {
-
+    console.log("handleNextClick");
+    console.log(places);
+    if (places.length === 0) {
+      // if (unvisitedPlaces.length > 0 && attempt < ATTEMPTS_ALLOWED) {
+      //   setShowPlacesSelect(true);
+      //   // setAttempt(attempt + 1);
+      // }
     } else {
-      setCurrentPlaceIndex(currentPlaceIndex + 1);
+      const [place, ...leftPlaces] = places;
+      setPlaces(leftPlaces);
+      setLastPlace(place);
+      setVisitedPlaces([...visitedPlaces, place.id]);
+      setUnvisitedPlaces(unvisitedPlaces.filter(id => id !== place.id));
     }
   }
 
   return (
     <Wrapper>
       <StyledLabel>
-        {currentPlace.name}
+        {lastPlace.name}
       </StyledLabel>
-      <StyledHeader dangerouslySetInnerHTML={{__html: currentPlace.description}} />
-      <Button onClick={handleNextClick}>
-        {i18n.next}
-      </Button>
+      {
+        places.length === 0
+          ? <>SELECT MORE</>
+          : <Place place={places[0]} onNext={handleNextClick} />
+      }
     </Wrapper>
   );
 }
@@ -51,20 +66,4 @@ const StyledLabel = styled(Label)`
   position: absolute;
   left: 0;
   top: 0;
-`;
-
-const StyledHeader = styled(Header)`
-  font-size: 10px;
-  
-  h1 {
-    
-  }
-  
-  h2 {
-    
-  }
-  
-  h3 {
-    
-  }
 `;
