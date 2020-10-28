@@ -26,6 +26,7 @@ const Road = ({ road }) => {
           )
           : (
             <StoppingPlacesSelect
+              caption={road.question1}
               places={places}
               onSelect={handleStoppingPlacesSelect}
             />

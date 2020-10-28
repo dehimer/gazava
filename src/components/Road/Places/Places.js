@@ -29,7 +29,7 @@ const Places = ({
       <StyledLabel>
         {currentPlace.name}
       </StyledLabel>
-        <StyledHeader dangerouslySetInnerHTML={{__html: currentPlace.description}} />
+      <StyledHeader dangerouslySetInnerHTML={{__html: currentPlace.description}} />
       <Button onClick={handleNextClick}>
         {i18n.next}
       </Button>

@@ -7,7 +7,7 @@ import Checkbox from "../../common/Checkbox";
 
 import i18n from "../../../constants/i18n";
 
-const StoppingPlacesSelect = ({ places, onSelect }) => {
+const StoppingPlacesSelect = ({ caption, places, onSelect }) => {
   const [selected, setSelected] = React.useState([]);
   const disabled = React.useMemo(() => selected.length === 0, [selected]);
   const handleSelect = (index) => () => {
@@ -26,7 +26,7 @@ const StoppingPlacesSelect = ({ places, onSelect }) => {
 
   return (
     <Wrapper>
-      <SmallerHeader>{i18n["select-places-label"]}</SmallerHeader>
+      <SmallerHeader>{caption}</SmallerHeader>
       <CheckboxesWrapper>
         {
           places.map((place, index) => (
