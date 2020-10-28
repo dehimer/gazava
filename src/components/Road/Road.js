@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-import StoppingPlacesSelect from "./StoppingPlacesSelect";
+import PlacesSelect from "./PlacesSelect";
 import Places from "./Places";
 
-const Road = ({ road }) => {
+const Road = ({ road, onFinish }) => {
   const [driving, setDriving] = React.useState(false);
   const [stoppingPlaces, setStoppingPlaces] = React.useState([]);
   const places = road.stages;
 
-  const handleStoppingPlacesSelect = (places) => {
+  const handlePlacesSelect = (places) => {
     setStoppingPlaces(places);
     setDriving(true);
   }
@@ -20,15 +20,17 @@ const Road = ({ road }) => {
         driving
           ? (
             <Places
+              road={road}
               allPlaces={places}
-              initiallyLeftPlaces={stoppingPlaces}
+              selectedPlaces={stoppingPlaces}
+              onFinish={onFinish}
             />
           )
           : (
-            <StoppingPlacesSelect
+            <PlacesSelect
               caption={road.question1}
               places={places}
-              onSelect={handleStoppingPlacesSelect}
+              onSelect={handlePlacesSelect}
             />
           )
       }

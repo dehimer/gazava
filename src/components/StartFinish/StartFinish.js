@@ -10,7 +10,7 @@ import i18n from "../../constants/i18n";
 import data from "../../data.json";
 import Header from "../common/Header";
 
-const Start = () => {
+const StartFinish = () => {
   const roads = React.useMemo(() => data.roads, []);
   const [started, setStarted] = React.useState(false);
   const [finished, setFinished] = React.useState(false);
@@ -20,12 +20,22 @@ const Start = () => {
     setFinished(false);
   }
 
+  const handleFinishClick = () => {
+    setFinished(true);
+  }
+
   return (
     <Wrapper>
       <Background finished={finished} />
       <Panel>
         {started
-          ? <Roads roads={roads} />
+          ? (
+            <Roads
+              roads={roads}
+              finished={finished}
+              onFinish={handleFinishClick}
+            />
+          )
           : (
             <>
               <Question>{i18n["start-screen-label"]}</Question>
@@ -41,7 +51,7 @@ const Start = () => {
   )
 }
 
-export default Start
+export default StartFinish
 
 const Wrapper = styled.div`
   height: 100%;
