@@ -25,6 +25,11 @@ const Text = styled.div`
   align-items: center;
   padding: 20px;
   font-size: 30px;
+  
+  @media (max-width: 850px) {
+    font-size: 15px;
+    padding: 5px;
+  }
 `;
 
 const Triangle = styled(TriangleIcon)`
@@ -34,5 +39,10 @@ const Triangle = styled(TriangleIcon)`
     fill: crimson;
     height: 60px;
     width: 60px;
+    
+    @media (max-width: 850px) {
+      height: 30px;
+      width: 30px;
+    }
   }
 `;

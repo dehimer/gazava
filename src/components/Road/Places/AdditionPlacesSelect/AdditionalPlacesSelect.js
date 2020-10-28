@@ -69,8 +69,16 @@ const FinishButton = styled(Button)`
 const Controls = styled.div`
   display: flex;
   margin-top: 30px;
+  
+  @media (max-width: 850px) {
+    margin-top: 25px;
+  }
 `;
 
 const StyledButton = styled(Button)`
   margin-right: 100px;
+  
+  @media (max-width: 850px) {
+    margin-right: 50px;
+  }
 `;
