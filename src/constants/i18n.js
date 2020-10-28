@@ -11,6 +11,7 @@ const i18n = {
   "additional-places-select_caption-second": "Выбрать следующий аспект/аспекты:",
   "select-another-options": "Выберите другие опции",
   "select-another-patient": "Выбрать другого пациента",
+  "please-change-orientation": "Пожалуйста, поверните ваше устройство в горизонтально"
 };
 
 export default i18n;

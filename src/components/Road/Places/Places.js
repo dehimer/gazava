@@ -27,10 +27,16 @@ const Places = ({
 
   const [leftAttempt, setLeftAttempt] = React.useState(ATTEMPTS_ALLOWED);
 
+  React.useEffect(() => {
+    if (places.length) {
+      setLastPlace(places[0]);
+    }
+  }, [places])
+
   const handleNextClick = () => {
     const [place, ...leftPlaces] = places;
     setPlaces(leftPlaces);
-    setLastPlace(place);
+    // setLastPlace(place);
     setVisitedPlaces([...visitedPlaces, place]);
     setUnvisitedPlaces(unvisitedPlaces.filter(unvisitedPlace => unvisitedPlace.id !== place.id));
   }
@@ -40,6 +46,7 @@ const Places = ({
       !additionalPlaces.map(place => place.id).includes(id)
     ));
     setPlaces(additionalPlaces);
+    // setLastPlace(additionalPlaces[0]);
     setLeftAttempt(leftAttempt - 1);
   }
 
