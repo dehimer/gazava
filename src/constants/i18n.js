@@ -8,7 +8,8 @@ const i18n = {
   "to-finish": "К финишу",
   "to-finish-fast": "Скорей к финишу",
   "additional-places-select_caption": "Продолжаем движение?",
-  "additional-places-select_caption-second": "Выбрать следующий аспект/аспекты:"
+  "additional-places-select_caption-second": "Выбрать следующий аспект/аспекты:",
+  "select-another-options": "Выберите другие опции",
 };
 
 export default i18n;

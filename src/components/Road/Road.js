@@ -20,6 +20,7 @@ const Road = ({ road }) => {
         driving
           ? (
             <Places
+              road={road}
               allPlaces={places}
               selectedPlaces={stoppingPlaces}
             />

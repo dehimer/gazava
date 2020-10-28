@@ -10,6 +10,7 @@ import AdditionalPlacesSelect from "./AdditionPlacesSelect";
 const ATTEMPTS_ALLOWED = 2;
 
 const Places = ({
+  road,
   selectedPlaces,
   allPlaces
 }) => {
@@ -51,6 +52,11 @@ const Places = ({
               ? <End />
               : (
                 <AdditionalPlacesSelect
+                  caption={
+                    leftAttempt === 2
+                      ? road.question2
+                      : road.question2
+                  }
                   leftAttempt={leftAttempt}
                   unvisitedPlaces={unvisitedPlaces}
                   onFinishClick={handleFinishClick}

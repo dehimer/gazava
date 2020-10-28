@@ -7,13 +7,35 @@ import Button from "../../../common/Button";
 import Header from "../../../common/Header";
 
 const AdditionalPlacesSelect = ({
+  caption,
   leftAttempt,
   unvisitedPlaces,
   onFinishClick
 }) => {
+  const [showPreview, setShowPreview] = React.useState(true);
   const handlePlacesSelect = (places) => {
     console.log("handlePlacesSelect");
     console.log(places);
+  }
+
+  const handleAnotherOptionButton = () => {
+    setShowPreview(false);
+  }
+
+  if (showPreview) {
+    return (
+      <>
+        <Header>{caption}</Header>
+        <Controls>
+          <StyledButton onClick={handleAnotherOptionButton}>
+            {i18n["select-another-options"]}
+          </StyledButton>
+          <Button onClick={onFinishClick}>
+            {i18n["to-finish"]}
+          </Button>
+        </Controls>
+      </>
+    );
   }
 
   return (
@@ -43,4 +65,13 @@ export default AdditionalPlacesSelect;
 
 const FinishButton = styled(Button)`
   margin-left: 100px;
+`;
+
+const Controls = styled.div`
+  display: flex;
+  margin-top: 30px;
+`;
+
+const StyledButton = styled(Button)`
+  margin-right: 100px;
 `;
