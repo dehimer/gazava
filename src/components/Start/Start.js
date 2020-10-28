@@ -50,7 +50,7 @@ const Wrapper = styled.div`
 
 const Panel = styled.div`
   position: absolute;
-  min-height: 50vh;
+  min-height: 80vh;
   width: 100%;
   left: 0;
   bottom: 0;

@@ -23,7 +23,8 @@ const Text = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 5px;
+  padding: 20px;
+  font-size: 30px;
 `;
 
 const Triangle = styled(TriangleIcon)`
@@ -31,7 +32,7 @@ const Triangle = styled(TriangleIcon)`
   
   svg {
     fill: crimson;
-    height: 20px;
-    width: 20px;
+    height: 60px;
+    width: 60px;
   }
 `;
