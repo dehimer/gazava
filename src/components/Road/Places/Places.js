@@ -27,33 +27,37 @@ const Places = ({
   const [places, setPlaces] = React.useState(selectedPlaces);
   const [lastPlace, setLastPlace] = React.useState(places[0]);
 
+  const [timeForNextAppear, setTimeForNextAppear] = React.useState(-1);
   const [leftAttempt, setLeftAttempt] = React.useState(ATTEMPTS_ALLOWED);
 
   React.useEffect(() => {
     if (places.length) {
       setLastPlace(places[0]);
+      setTimeForNextAppear(places[0].timing);
     }
   }, [places])
 
-  const tick = React.useRef(0);
-
   React.useEffect(() => {
     const handleTimeupdate = () => {
-      tick.current++;
-      console.log(`handleTimeupdate ${tick.current}`);
+      // console.log(`handleTimeupdate ${videoRef.currentTime} === ${timeForNextAppear}`);
+      if (Math.abs(videoRef.currentTime - timeForNextAppear) < 0.100) {
+        // console.log("pause");
+        videoRef.pause();
+      }
     }
     videoRef.addEventListener(TIME_UPDATE_EVENT, handleTimeupdate, false);
 
     return () => {
       videoRef.removeEventListener(TIME_UPDATE_EVENT, handleTimeupdate, false);
     }
-  }, [videoRef])
+  }, [timeForNextAppear, videoRef])
 
   const handleNextClick = () => {
     const [place, ...leftPlaces] = places;
     setPlaces(leftPlaces);
     setVisitedPlaces([...visitedPlaces, place]);
     setUnvisitedPlaces(unvisitedPlaces.filter(unvisitedPlace => unvisitedPlace.id !== place.id));
+    videoRef.play();
   }
 
   const handleAdditionalPlacesSelect = (additionalPlaces) => {

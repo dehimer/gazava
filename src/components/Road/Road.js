@@ -6,8 +6,8 @@ import Places from "./Places";
 
 const Road = ({
   road,
-  onFinish,
-  videoRef
+  videoRef,
+  onFinish
 }) => {
   const [driving, setDriving] = React.useState(false);
   const [stoppingPlaces, setStoppingPlaces] = React.useState([]);
