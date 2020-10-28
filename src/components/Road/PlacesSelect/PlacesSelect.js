@@ -7,7 +7,13 @@ import Checkbox from "../../common/Checkbox";
 
 import i18n from "../../../constants/i18n";
 
-const StoppingPlacesSelect = ({ caption, places, onSelect }) => {
+const PlacesSelect = ({
+  caption,
+  places,
+  onSelect,
+  buttonText = i18n.start,
+  children
+}) => {
   const [selected, setSelected] = React.useState([]);
   const disabled = React.useMemo(() => selected.length === 0, [selected]);
   const handleSelect = (index) => () => {
@@ -39,14 +45,17 @@ const StoppingPlacesSelect = ({ caption, places, onSelect }) => {
           ))
         }
       </CheckboxesWrapper>
-      <Button onClick={handleStartClick} disabled={disabled}>
-        {i18n["start"]}
-      </Button>
+      <Controls>
+        <Button onClick={handleStartClick} disabled={disabled}>
+          {buttonText}
+        </Button>
+        {children}
+      </Controls>
     </Wrapper>
   );
 }
 
-export default StoppingPlacesSelect;
+export default PlacesSelect;
 
 const Wrapper = styled.div`
   display: flex;
@@ -77,4 +86,8 @@ const CheckboxesWrapper = styled.div`
 
 const StyledCheckbox = styled(Checkbox)`
   width: 300px;
+`;
+
+const Controls = styled.div`
+  display: flex;
 `;

@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Label from "../../common/Label";
 
 import Place from "./Place";
+import End from "./End";
+import AdditionalPlacesSelect from "./AdditionPlacesSelect";
 
 const ATTEMPTS_ALLOWED = 2;
 
@@ -12,7 +14,11 @@ const Places = ({
   allPlaces
 }) => {
   const [visitedPlaces, setVisitedPlaces] = React.useState([]);
-  const [unvisitedPlaces, setUnvisitedPlaces] = React.useState(allPlaces.map(({ id }) => id));
+  const [unvisitedPlaces, setUnvisitedPlaces] = React.useState(
+    allPlaces.filter(({ id }) =>
+      !selectedPlaces.map(place => place.id).includes(id)
+    )
+  );
 
   const [places, setPlaces] = React.useState(selectedPlaces);
   const [lastPlace, setLastPlace] = React.useState(places[0]);
@@ -22,20 +28,15 @@ const Places = ({
   const [showPlacesSelect, setShowPlacesSelect] = React.useState(false);
 
   const handleNextClick = () => {
-    console.log("handleNextClick");
-    console.log(places);
-    if (places.length === 0) {
-      // if (unvisitedPlaces.length > 0 && attempt < ATTEMPTS_ALLOWED) {
-      //   setShowPlacesSelect(true);
-      //   // setAttempt(attempt + 1);
-      // }
-    } else {
-      const [place, ...leftPlaces] = places;
-      setPlaces(leftPlaces);
-      setLastPlace(place);
-      setVisitedPlaces([...visitedPlaces, place.id]);
-      setUnvisitedPlaces(unvisitedPlaces.filter(id => id !== place.id));
-    }
+    const [place, ...leftPlaces] = places;
+    setPlaces(leftPlaces);
+    setLastPlace(place);
+    setVisitedPlaces([...visitedPlaces, place]);
+    setUnvisitedPlaces(unvisitedPlaces.filter(unvisitedPlace => unvisitedPlace.id !== place.id));
+  }
+
+  const handleFinishClick = () => {
+    console.log("handleFinishClick");
   }
 
   return (
@@ -45,8 +46,23 @@ const Places = ({
       </StyledLabel>
       {
         places.length === 0
-          ? <>SELECT MORE</>
-          : <Place place={places[0]} onNext={handleNextClick} />
+          ? (
+            unvisitedPlaces.length === 0 || leftAttempt === 0
+              ? <End />
+              : (
+                <AdditionalPlacesSelect
+                  leftAttempt={leftAttempt}
+                  unvisitedPlaces={unvisitedPlaces}
+                  onFinishClick={handleFinishClick}
+                />
+              )
+          )
+          : (
+            <Place
+              place={places[0]}
+              onNext={handleNextClick}
+            />
+          )
       }
     </Wrapper>
   );

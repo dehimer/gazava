@@ -44,9 +44,12 @@ const Wrapper = styled.div`
   opacity: ${({ disabled }) => disabled ? "0.5" : "1"};
   padding: 20px;
   background-color: ${({ selected }) => selected ? "#a40023" : "#445565"};
-  width: 140px;
+  min-width: 140px;
   text-align: center;
   color: white;
   font-size: 20px;
   user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
