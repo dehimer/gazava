@@ -26,15 +26,12 @@ const Places = ({
   );
 
   const [places, setPlaces] = React.useState(selectedPlaces);
-  const [lastPlace, setLastPlace] = React.useState(places[0]);
 
   const timeForNextAppear = React.useRef(-1);
   const [leftAttempt, setLeftAttempt] = React.useState(ATTEMPTS_ALLOWED);
 
   React.useEffect(() => {
     if (places.length) {
-      setLastPlace(places[0]);
-      // console.log(places[0]);
       timeForNextAppear.current = places[0].timing;
     }
   }, [places])
@@ -102,9 +99,6 @@ const Places = ({
 
   return (
     <Wrapper>
-      <StyledLabel>
-        {lastPlace.name}
-      </StyledLabel>
       {
         places.length === 0
           ? (
@@ -129,10 +123,15 @@ const Places = ({
               )
           )
           : (
-            <Place
-              place={places[0]}
-              onNext={handleNextClick}
-            />
+            <>
+              <StyledLabel>
+                {places[0].name}
+              </StyledLabel>
+              <Place
+                place={places[0]}
+                onNext={handleNextClick}
+              />
+            </>
           )
       }
     </Wrapper>
