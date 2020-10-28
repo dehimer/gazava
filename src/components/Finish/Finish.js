@@ -9,7 +9,7 @@ import Panel from "../common/Panel";
 const Finish = ({ road, onRestart }) => (
   <Wrapper>
     <TopPanel>
-      <Header>{road.finish}</Header>
+      <StyledHeader>{road.finish}</StyledHeader>
       <Addition dangerouslySetInnerHTML={{__html: road.finishAddition}} />
     </TopPanel>
     <BottomPanel>
@@ -31,6 +31,10 @@ const Wrapper = styled.div`
 
 const Addition = styled(Header)`
   font-size: 25px;
+  
+  @media (max-width: 850px) {
+    font-size: 14px;
+  }
 `;
 
 const TopPanel = styled(Panel)`
@@ -47,4 +51,14 @@ const BottomPanel = styled(Panel)`
   bottom: 0;
   min-height: 120px;
   padding-top: 10px;
+  
+  @media (max-width: 850px) {
+    min-height: 80px;
+  }
+`;
+
+const StyledHeader = styled(Header)`
+  @media (max-width: 850px) {
+    font-size: 20px;
+  }
 `;
