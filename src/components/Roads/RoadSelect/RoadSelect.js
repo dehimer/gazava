@@ -2,6 +2,8 @@ import React from "react";
 
 import Button from "../../common/Button";
 import styled from "styled-components";
+import i18n from "../../../constants/i18n";
+import Header from "../../common/Header";
 
 const RoadSelect = ({ roads, onSelect }) => {
   const handleSelect = (road) => () => {
@@ -10,17 +12,20 @@ const RoadSelect = ({ roads, onSelect }) => {
 
   return (
     <Wrapper>
-      {
-        roads.map(road => (
-          <RoadButton
-            key={road.id}
-            onClick={handleSelect(road)}
-          >
-            <Name>{road.name}</Name>
-            <NameAddition>{road.nameAddition}</NameAddition>
-          </RoadButton>
-        ))
-      }
+      <StyledHeader>{i18n["select-road-label"]}</StyledHeader>
+      <RoadsWrapper>
+        {
+          roads.map(road => (
+            <RoadButton
+              key={road.id}
+              onClick={handleSelect(road)}
+            >
+              <Name>{road.name}</Name>
+              <NameAddition>{road.nameAddition}</NameAddition>
+            </RoadButton>
+          ))
+        }
+      </RoadsWrapper>
     </Wrapper>
   );
 }
@@ -29,10 +34,21 @@ export default RoadSelect;
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const RoadsWrapper = styled.div`
+  display: flex;
   justify-content: space-between;
   margin: 10px;
   min-width: 1000px;
   max-width: 100vw;
+`;
+
+const StyledHeader = styled(Header)`
+  margin-bottom: 20px;
 `;
 
 const RoadButton = styled(Button)`
