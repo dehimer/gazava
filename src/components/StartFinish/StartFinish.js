@@ -34,7 +34,7 @@ const StartFinish = () => {
   return (
     <Wrapper>
       <Background finished={finished} />
-
+      <Version>M-RU-00001112 октябрь 2020</Version>
         {started
           ? (
             <Roads
@@ -65,6 +65,15 @@ const StartFinish = () => {
 }
 
 export default StartFinish
+
+const Version = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  font-size: 10px;
+  z-index: 1;
+`;
 
 const Wrapper = styled.div`
   height: 100%;
