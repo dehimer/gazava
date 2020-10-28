@@ -57,7 +57,12 @@ const Places = ({
         places.length === 0
           ? (
             unvisitedPlaces.length === 0 || leftAttempt === 0
-              ? <End />
+              ? (
+                <End
+                  caption={road.question4}
+                  onFinishClick={handleFinishClick}
+                />
+              )
               : (
                 <AdditionalPlacesSelect
                   caption={
