@@ -37,14 +37,12 @@ const StartFinish = () => {
 
         {started
           ? (
-            <StyledPanel>
-              <Roads
-                roads={roads}
-                finished={finished}
-                onFinish={handleFinishClick}
-                onRestart={handleRestartClick}
-              />
-            </StyledPanel>
+            <Roads
+              roads={roads}
+              finished={finished}
+              onFinish={handleFinishClick}
+              onRestart={handleRestartClick}
+            />
           )
           : (
             <>
@@ -87,14 +85,6 @@ const BottomPanel = styled(Panel)`
   bottom: 0;
   min-height: 120px;
   padding-top: 10px;
-`;
-
-const StyledPanel = styled(Panel)`
-  position: absolute;
-  min-height: 80vh;
-  width: 100%;
-  left: 0;
-  bottom: 0;
 `;
 
 const Question = styled(Header)`
