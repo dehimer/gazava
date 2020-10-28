@@ -43,7 +43,7 @@ const Wrapper = styled.div`
   cursor: ${({ disabled }) => disabled ? "cursor" : "pointer"};
   opacity: ${({ disabled }) => disabled ? "0.5" : "1"};
   padding: 20px;
-  background-color: ${({ selected }) => selected ? "crimson" : "#333"};
+  background-color: ${({ selected }) => selected ? "#a40023" : "#445565"};
   width: 140px;
   text-align: center;
   color: white;
