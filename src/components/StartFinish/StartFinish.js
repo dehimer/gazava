@@ -166,6 +166,7 @@ const Question = styled(Header)`
   
   @media(max-width: 850px) {
     margin-bottom: 0;
+    font-size: 14px;
   }
 `;
 

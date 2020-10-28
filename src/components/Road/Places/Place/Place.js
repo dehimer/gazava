@@ -37,6 +37,10 @@ const StyledHeader = styled(Header)`
     @media (max-width: 850px) {
       font-size: 12px;
     }
+    
+    @media (max-width: 700px) {
+      font-size: 10px;
+    }
   }
   
   h2 {
@@ -46,6 +50,10 @@ const StyledHeader = styled(Header)`
     @media (max-width: 850px) {
       font-size: 10px;
     }
+    
+    @media (max-width: 700px) {
+      font-size: 7px;
+    }
   }
   
   h3 {
@@ -54,6 +62,10 @@ const StyledHeader = styled(Header)`
     
     @media (max-width: 850px) {
       font-size: 8px;
+    }
+    
+    @media (max-width: 700px) {
+      font-size: 4px;
     }
   }
 
