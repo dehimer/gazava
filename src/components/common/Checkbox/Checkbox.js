@@ -29,6 +29,7 @@ const Square = styled.div`
   background-color: ${({ selected }) => selected ? "crimson" : "none"};
   width: 20px;
   height: 20px;
+  flex-shrink: 0;
 `;
 
 const Label = styled.div`
