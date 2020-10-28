@@ -7,7 +7,7 @@ import Place from "./Place";
 import End from "./End";
 import AdditionalPlacesSelect from "./AdditionPlacesSelect";
 
-import { VIDEO_TIME_UPDATE_EVENT } from "../../../constants/events";
+import {VIDEO_ENDED_EVENT, VIDEO_TIME_UPDATE_EVENT} from "../../../constants/events";
 
 const ATTEMPTS_ALLOWED = 2;
 
@@ -48,9 +48,16 @@ const Places = ({
         videoRef.pause();
       }
     }
+    const handleEnded = () => {
+      videoRef.currentTime = 0;
+      onFinish();
+    }
+
+    videoRef.addEventListener(VIDEO_ENDED_EVENT, handleEnded);
     videoRef.addEventListener(VIDEO_TIME_UPDATE_EVENT, handleTimeupdate, false);
 
     return () => {
+      videoRef.removeEventListener(VIDEO_ENDED_EVENT, handleEnded);
       videoRef.removeEventListener(VIDEO_TIME_UPDATE_EVENT, handleTimeupdate, false);
     }
   }, [videoRef])
@@ -82,6 +89,10 @@ const Places = ({
     videoRef.play();
   }
 
+  const handleFinishClick = () => {
+    videoRef.play();
+  }
+
   return (
     <Wrapper>
       <StyledLabel>
@@ -94,7 +105,7 @@ const Places = ({
               ? (
                 <End
                   caption={road.question4}
-                  onFinishClick={onFinish}
+                  onFinishClick={handleFinishClick}
                 />
               )
               : (
@@ -106,7 +117,7 @@ const Places = ({
                   }
                   unvisitedPlaces={unvisitedPlaces}
                   onSelect={handleAdditionalPlacesSelect}
-                  onFinishClick={onFinish}
+                  onFinishClick={handleFinishClick}
                 />
               )
           )
