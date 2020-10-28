@@ -11,7 +11,6 @@ const StoppingPlacesSelect = ({ caption, places, onSelect }) => {
   const [selected, setSelected] = React.useState([]);
   const disabled = React.useMemo(() => selected.length === 0, [selected]);
   const handleSelect = (index) => () => {
-    console.log(`handleSelect ${index}`);
     setSelected((prevSelected) => {
       if (prevSelected.includes(index)) {
         return prevSelected.filter(idx => idx !== index);

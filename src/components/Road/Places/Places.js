@@ -55,4 +55,16 @@ const StyledLabel = styled(Label)`
 
 const StyledHeader = styled(Header)`
   font-size: 10px;
+  
+  h1 {
+    
+  }
+  
+  h2 {
+    
+  }
+  
+  h3 {
+    
+  }
 `;
