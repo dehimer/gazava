@@ -30,14 +30,21 @@ const StyledHeader = styled(Header)`
   font-size: 10px;
   
   h1 {
-    
+    font-size: 32px;
+    font-weight: normal;
   }
   
   h2 {
-    
+    font-size: 28px;
+    font-weight: normal;
   }
   
   h3 {
-    
+    font-size: 20px;
+    font-weight: normal;
+  }
+  b {
+    color: #a40023;
+    font-weight: normal;
   }
 `;

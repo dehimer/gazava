@@ -37,6 +37,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: -80px;
 `;
 
 const RoadsWrapper = styled.div`
@@ -61,14 +62,15 @@ const RoadButton = styled(Button)`
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 240px;
+  width: 280px;
 `;
 
 const Name = styled.div`
   font-size: 18px;
+  font-weight: bold;
 `;
 
 const NameAddition = styled.div`
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 0px;
 `;
