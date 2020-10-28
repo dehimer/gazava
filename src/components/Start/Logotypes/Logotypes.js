@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const Logotypes = () => (
   <>
-    <LogoTop src="/images/logo2.png" />
-    <LogoBottom src="/images/logo.png" />
+    <LogoTop src="./images/logo2.png" />
+    <LogoBottom src="./images/logo.png" />
   </>
 )
 

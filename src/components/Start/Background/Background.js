@@ -5,7 +5,7 @@ const Background = ({
 }) => (
   <Wrapper>
     <Image
-      src={`/images/${
+      src={`./images/${
         finished
           ? "bg-finish.jpg"
           : "bg-start.jpg"
