@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Header from "../common/Header";
+import Panel from "../common/Panel";
 
 import Finish from "../Finish";
 import Road from "../Road";
@@ -27,18 +27,20 @@ const Roads = ({
   }
 
   return (
-    <Wrapper>
-      {
-        road
-          ? <Road road={road} onFinish={onFinish} />
-          : (
-            <RoadSelect
-              roads={roads}
-              onSelect={handleRoadSelect}
-            />
-          )
-      }
-    </Wrapper>
+    <StyledPanel>
+      <Wrapper>
+        {
+          road
+            ? <Road road={road} onFinish={onFinish} />
+            : (
+              <RoadSelect
+                roads={roads}
+                onSelect={handleRoadSelect}
+              />
+            )
+        }
+      </Wrapper>
+    </StyledPanel>
   );
 }
 
@@ -49,4 +51,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
+
+const StyledPanel = styled(Panel)`
+  position: absolute;
+  min-height: 80vh;
+  width: 100%;
+  left: 0;
+  bottom: 0;
 `;

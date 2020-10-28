@@ -4,16 +4,19 @@ import i18n from "../../constants/i18n";
 
 import Header from "../common/Header";
 import Button from "../common/Button";
+import Panel from "../common/Panel";
 
 const Finish = ({ road, onRestart }) => (
   <Wrapper>
-    <div>
+    <TopPanel>
       <Header>{road.finish}</Header>
       <Addition dangerouslySetInnerHTML={{__html: road.finishAddition}} />
-    </div>
-    <StyledButton onClick={onRestart}>
-      {i18n["select-another-patient"]}
-    </StyledButton>
+    </TopPanel>
+    <BottomPanel>
+      <Button onClick={onRestart}>
+        {i18n["select-another-patient"]}
+      </Button>
+    </BottomPanel>
   </Wrapper>
 )
 
@@ -30,6 +33,18 @@ const Addition = styled(Header)`
   font-size: 25px;
 `;
 
-const StyledButton = styled(Button)`
-  margin-top: 20px;
+const TopPanel = styled(Panel)`
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 22vh;
+`;
+
+const BottomPanel = styled(Panel)`
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  min-height: 120px;
+  padding-top: 10px;
 `;
