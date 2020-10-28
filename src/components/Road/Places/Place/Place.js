@@ -35,7 +35,7 @@ const StyledHeader = styled(Header)`
     font-weight: normal;
     
     @media (max-width: 850px) {
-      font-size: 20px;
+      font-size: 12px;
     }
   }
   
@@ -44,7 +44,7 @@ const StyledHeader = styled(Header)`
     font-weight: normal;
     
     @media (max-width: 850px) {
-      font-size: 16px;
+      font-size: 10px;
     }
   }
   
@@ -53,7 +53,7 @@ const StyledHeader = styled(Header)`
     font-weight: normal;
     
     @media (max-width: 850px) {
-      font-size: 12px;
+      font-size: 8px;
     }
   }
 
