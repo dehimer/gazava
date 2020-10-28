@@ -41,9 +41,9 @@ const Places = ({
 
   React.useEffect(() => {
     const handleTimeupdate = () => {
-      // console.log(`handleTimeupdate ${videoRef.currentTime} > ${timeForNextAppear.current}`);
+      console.log(`handleTimeupdate ${videoRef.currentTime} > ${timeForNextAppear.current}`);
       if (timeForNextAppear.current > 0 && videoRef.currentTime > timeForNextAppear.current) {
-        // console.log("pause");
+        console.log("pause");
         timeForNextAppear.current = -1;
         videoRef.pause();
       }
@@ -60,7 +60,7 @@ const Places = ({
       videoRef.removeEventListener(VIDEO_ENDED_EVENT, handleEnded);
       videoRef.removeEventListener(VIDEO_TIME_UPDATE_EVENT, handleTimeupdate, false);
     }
-  }, [videoRef])
+  }, [onFinish, videoRef])
 
   const handleNextClick = () => {
     const [place, ...leftPlaces] = places;
@@ -68,6 +68,13 @@ const Places = ({
     setVisitedPlaces([...visitedPlaces, place]);
     setUnvisitedPlaces(unvisitedPlaces.filter(unvisitedPlace => unvisitedPlace.id !== place.id));
     if (leftPlaces.length > 0) {
+      const placeIndex = allPlaces.map(place => place.id).indexOf(leftPlaces[0].id);
+      // console.log(`placeIndex ${placeIndex}`);
+      // console.log("allPlaces[placeIndex - 1]");
+      // console.log(allPlaces[placeIndex - 1]);
+      if (placeIndex >= 1) {
+        videoRef.currentTime = allPlaces[placeIndex - 1].timing;
+      }
       videoRef.play();
     }
   }
