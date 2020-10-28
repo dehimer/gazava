@@ -24,7 +24,7 @@ const AdditionalPlacesSelect = ({
   if (showPreview) {
     return (
       <>
-        <Header>{caption}</Header>
+        <StyledHeader>{caption}</StyledHeader>
         <Controls>
           <StyledButton onClick={handleAnotherOptionButton}>
             {i18n["select-another-options"]}
@@ -40,14 +40,14 @@ const AdditionalPlacesSelect = ({
   return (
     <PlacesSelect
       caption={
-        <Header>
+        <StyledHeader>
           <div>
             {i18n["additional-places-select_caption"]}
           </div>
           <div>
             {i18n["additional-places-select_caption-second"]}
           </div>
-        </Header>
+        </StyledHeader>
       }
       places={unvisitedPlaces}
       onSelect={handlePlacesSelect}
@@ -72,6 +72,12 @@ const Controls = styled.div`
   
   @media (max-width: 850px) {
     margin-top: 25px;
+  }
+`;
+
+const StyledHeader = styled(Header)`
+  @media (max-width: 850px) {
+    font-size: 22px;
   }
 `;
 
