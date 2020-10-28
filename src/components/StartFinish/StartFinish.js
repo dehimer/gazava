@@ -44,7 +44,6 @@ const StartFinish = () => {
   const [videoRef, setVideoRef] = React.useState(null);
 
   React.useEffect(() => {
-    console.log(videoRef);
     const handlePlay = () => {
       setHideLogo(true);
     };
@@ -83,7 +82,7 @@ const StartFinish = () => {
     <Wrapper>
       <Background finished={finished} />
       <VideoWrapper>
-        <video ref={setVideoRef} />
+        <video ref={setVideoRef} playsInline muted />
       </VideoWrapper>
       <Version>M-RU-00001112 октябрь 2020</Version>
       { portraitView && (
@@ -153,12 +152,21 @@ const BottomPanel = styled(Panel)`
   bottom: 0;
   min-height: 120px;
   padding-top: 10px;
+  
+  @media(max-width: 850px) {
+    min-height: 80px;
+  }
 `;
 
 const Question = styled(Header)`
   text-align: center;
   margin-bottom: 20px;
   width: 700px;
+  max-width: 100%;
+  
+  @media(max-width: 850px) {
+    margin-bottom: 0;
+  }
 `;
 
 const FullScreenPanel = styled(Panel)`

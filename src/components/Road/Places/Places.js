@@ -41,9 +41,9 @@ const Places = ({
 
   React.useEffect(() => {
     const handleTimeupdate = () => {
-      console.log(`handleTimeupdate ${videoRef.currentTime} > ${timeForNextAppear.current}`);
+      // console.log(`handleTimeupdate ${videoRef.currentTime} > ${timeForNextAppear.current}`);
       if (timeForNextAppear.current > 0 && videoRef.currentTime > timeForNextAppear.current) {
-        console.log("pause");
+        // console.log("pause");
         timeForNextAppear.current = -1;
         videoRef.pause();
       }

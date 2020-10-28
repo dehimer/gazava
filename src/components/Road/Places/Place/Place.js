@@ -32,17 +32,30 @@ const StyledHeader = styled(Header)`
   h1 {
     font-size: 32px;
     font-weight: normal;
+    
+    @media (max-width: 850px) {
+      font-size: 20px;
+    }
   }
   
   h2 {
     font-size: 28px;
     font-weight: normal;
+    
+    @media (max-width: 850px) {
+      font-size: 16px;
+    }
   }
   
   h3 {
     font-size: 20px;
     font-weight: normal;
+    
+    @media (max-width: 850px) {
+      font-size: 12px;
+    }
   }
+
   b {
     color: #a40023;
     font-weight: normal;

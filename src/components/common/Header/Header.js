@@ -9,6 +9,11 @@ const Header = styled.div`
   max-width: 100%;
   text-align: center;
   user-select: none;
+  
+  @media (max-width: 850px) {
+    font-size: 30px;
+    padding: 20px;
+  }
 `
 
 export default Header;

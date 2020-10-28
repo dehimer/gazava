@@ -38,6 +38,10 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: -80px;
+  
+  @media (max-width: 700px) {
+    margin-top: 0;
+  }
 `;
 
 const RoadsWrapper = styled.div`
@@ -46,7 +50,7 @@ const RoadsWrapper = styled.div`
   margin: 10px;
   width: 1000px;
   max-width: 100%;
-  
+
   @media (max-width: 700px) {
     flex-direction: column;
     align-items: center;
@@ -55,6 +59,10 @@ const RoadsWrapper = styled.div`
 
 const StyledHeader = styled(Header)`
   margin-bottom: 20px;
+  
+  @media(max-width: 850px) {
+    margin-bottom: 0;
+  }
 `;
 
 const RoadButton = styled(Button)`
@@ -63,14 +71,28 @@ const RoadButton = styled(Button)`
   align-items: center;
   flex-direction: column;
   width: 280px;
+  
+  @media(max-width: 850px) {
+    margin: 5px;
+    padding: 10px;
+  }
 `;
 
 const Name = styled.div`
   font-size: 18px;
   font-weight: bold;
+  
+  @media(max-width: 850px) {
+    font-size: 14px;
+  }
 `;
 
 const NameAddition = styled.div`
   font-size: 14px;
-  margin-top: 0px;
+  margin-top: 0;
+  
+  @media(max-width: 850px) {
+    font-size: 12px;
+    margin-top: 5px;
+  }
 `;

@@ -75,6 +75,10 @@ const Wrapper = styled.div`
 const SmallerHeader = styled(Header)`
   font-size: 30px;
   text-align: center;
+  
+  @media(max-width: 850px) {
+    font-size: 20px;
+  }
 `;
 
 const CheckboxesWrapper = styled.div`
