@@ -21,6 +21,11 @@ const Roads = ({
 
   const handleRoadSelect = (road) => {
     setRoad(road);
+    window.ym(
+      68806243,
+      "hit",
+      `./route${road.id}`
+    );
   }
 
   React.useEffect(() => {
