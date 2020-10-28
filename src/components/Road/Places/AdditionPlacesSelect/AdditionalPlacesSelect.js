@@ -8,14 +8,13 @@ import Header from "../../../common/Header";
 
 const AdditionalPlacesSelect = ({
   caption,
-  leftAttempt,
   unvisitedPlaces,
-  onFinishClick
+  onFinishClick,
+  onSelect
 }) => {
   const [showPreview, setShowPreview] = React.useState(true);
   const handlePlacesSelect = (places) => {
-    console.log("handlePlacesSelect");
-    console.log(places);
+    onSelect(places);
   }
 
   const handleAnotherOptionButton = () => {

@@ -36,6 +36,14 @@ const Places = ({
     setUnvisitedPlaces(unvisitedPlaces.filter(unvisitedPlace => unvisitedPlace.id !== place.id));
   }
 
+  const handleAdditionalPlacesSelect = (additionalPlaces) => {
+    setUnvisitedPlaces(unvisitedPlaces.filter(({ id }) =>
+      !additionalPlaces.map(place => place.id).includes(id)
+    ));
+    setPlaces(additionalPlaces);
+    setLeftAttempt(leftAttempt - 1);
+  }
+
   const handleFinishClick = () => {
     console.log("handleFinishClick");
   }
@@ -55,10 +63,10 @@ const Places = ({
                   caption={
                     leftAttempt === 2
                       ? road.question2
-                      : road.question2
+                      : road.question3
                   }
-                  leftAttempt={leftAttempt}
                   unvisitedPlaces={unvisitedPlaces}
+                  onSelect={handleAdditionalPlacesSelect}
                   onFinishClick={handleFinishClick}
                 />
               )
