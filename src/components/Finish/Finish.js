@@ -9,7 +9,7 @@ import Panel from "../common/Panel";
 const Finish = ({ road, onRestart }) => (
   <Wrapper>
     <TopPanel>
-      <StyledHeader>{road.finish}</StyledHeader>
+      <StyledHeader dangerouslySetInnerHTML={{__html: road.finish}} />
       <Addition dangerouslySetInnerHTML={{__html: road.finishAddition}} />
     </TopPanel>
     <BottomPanel>

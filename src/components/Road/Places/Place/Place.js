@@ -28,6 +28,7 @@ const Wrapper = styled.div`
 
 const StyledHeader = styled(Header)`
   font-size: 10px;
+  padding: 20px 40px;
   
   h1 {
     font-size: 32px;
