@@ -39,7 +39,7 @@ const Wrapper = styled.div`
   justify-content: center;
   margin-top: -80px;
   
-  @media (max-width: 700px) {
+  @media (max-width: 850px) {
     margin-top: 0;
   }
 `;
@@ -51,7 +51,7 @@ const RoadsWrapper = styled.div`
   width: 1000px;
   max-width: 100%;
 
-  @media (max-width: 700px) {
+  @media (max-width: 850px) {
     flex-direction: column;
     align-items: center;
   }
