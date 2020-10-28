@@ -7,8 +7,9 @@ import Place from "./Place";
 import End from "./End";
 import AdditionalPlacesSelect from "./AdditionPlacesSelect";
 
+import { VIDEO_TIME_UPDATE_EVENT } from "../../../constants/events";
+
 const ATTEMPTS_ALLOWED = 2;
-const TIME_UPDATE_EVENT = "timeupdate";
 
 const Places = ({
   road,
@@ -46,10 +47,10 @@ const Places = ({
         setTimeForNextAppear(-1);
       }
     }
-    videoRef.addEventListener(TIME_UPDATE_EVENT, handleTimeupdate, false);
+    videoRef.addEventListener(VIDEO_TIME_UPDATE_EVENT, handleTimeupdate, false);
 
     return () => {
-      videoRef.removeEventListener(TIME_UPDATE_EVENT, handleTimeupdate, false);
+      videoRef.removeEventListener(VIDEO_TIME_UPDATE_EVENT, handleTimeupdate, false);
     }
   }, [timeForNextAppear, videoRef])
 

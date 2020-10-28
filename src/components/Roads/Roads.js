@@ -7,8 +7,7 @@ import Finish from "../Finish";
 import Road from "../Road";
 import RoadSelect from "./RoadSelect";
 
-const PAUSE_VIDEO_EVENT = "pause";
-const PLAY_VIDEO_EVENT = "play";
+import { VIDEO_PAUSE_EVENT, VIDEO_PLAY_EVENT } from "../../constants/events";
 
 const Roads = ({
   roads,
@@ -26,22 +25,20 @@ const Roads = ({
 
   React.useEffect(() => {
     const handlePause = () => {
-      console.log("handlePause");
       setVideoOnly(false)
     };
 
     const handlePlay = () => {
-      console.log("handlePlay");
       setVideoOnly(true)
     };
 
-    videoRef.addEventListener(PAUSE_VIDEO_EVENT, handlePause);
-    videoRef.addEventListener(PLAY_VIDEO_EVENT, handlePlay);
+    videoRef.addEventListener(VIDEO_PAUSE_EVENT, handlePause);
+    videoRef.addEventListener(VIDEO_PLAY_EVENT, handlePlay);
 
 
     return () => {
-      videoRef.removeEventListener(PAUSE_VIDEO_EVENT, handlePause);
-      videoRef.removeEventListener(PLAY_VIDEO_EVENT, handlePlay);
+      videoRef.removeEventListener(VIDEO_PAUSE_EVENT, handlePause);
+      videoRef.removeEventListener(VIDEO_PLAY_EVENT, handlePlay);
     }
   }, [videoRef]);
 
@@ -50,8 +47,6 @@ const Roads = ({
       <Finish road={road} onRestart={onRestart} />
     );
   }
-
-  console.log(`videoOnly ${videoOnly}`);
 
   return (
     <StyledPanel videoOnly={videoOnly}>
