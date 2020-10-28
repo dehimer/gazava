@@ -60,7 +60,9 @@ const Places = ({
     setPlaces(leftPlaces);
     setVisitedPlaces([...visitedPlaces, place]);
     setUnvisitedPlaces(unvisitedPlaces.filter(unvisitedPlace => unvisitedPlace.id !== place.id));
-    videoRef.play();
+    if (leftPlaces.length > 0) {
+      videoRef.play();
+    }
   }
 
   const handleAdditionalPlacesSelect = (additionalPlaces) => {

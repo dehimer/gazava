@@ -30,7 +30,7 @@ const PlacesSelect = ({
     });
   }
   const handleStartClick = () => {
-    onSelect(selected.map(index => places[index]));
+    onSelect(selected.map(index => places[index]).sort((a, b) => a.id - b.id));
   }
 
   return (
