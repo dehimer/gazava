@@ -12,10 +12,29 @@ import Logotypes from "./Logotypes";
 import Panel from "../common/Panel";
 import Header from "../common/Header";
 
+const RESIZE_EVENT = "resize";
+
 const StartFinish = () => {
   const roads = React.useMemo(() => data.roads, []);
   const [started, setStarted] = React.useState(false);
   const [finished, setFinished] = React.useState(false);
+
+  const [portraitView, setPortraitView] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      const aspectRatio = window.innerHeight/window.innerWidth;
+      setPortraitView(aspectRatio > 1);
+    }
+
+    handleResize();
+
+    window.addEventListener(RESIZE_EVENT, handleResize);
+
+    return () => {
+      window.removeEventListener(RESIZE_EVENT, handleResize);
+    }
+  }, []);
 
   const handleStartClick = () => {
     setStarted(true);
@@ -35,6 +54,13 @@ const StartFinish = () => {
     <Wrapper>
       <Background finished={finished} />
       <Version>M-RU-00001112 октябрь 2020</Version>
+      { portraitView && (
+        <FullScreenPanel>
+          <Header>
+            {i18n["please-change-orientation"]}
+          </Header>
+        </FullScreenPanel>
+      )}
         {started
           ? (
             <Roads
@@ -100,4 +126,13 @@ const Question = styled(Header)`
   text-align: center;
   margin-bottom: 20px;
   width: 700px;
+`;
+
+const FullScreenPanel = styled(Panel)`
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
 `;
