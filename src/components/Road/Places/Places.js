@@ -34,16 +34,16 @@ const Places = ({
   React.useEffect(() => {
     if (places.length) {
       setLastPlace(places[0]);
-      console.log(places[0]);
+      // console.log(places[0]);
       timeForNextAppear.current = places[0].timing;
     }
   }, [places])
 
   React.useEffect(() => {
     const handleTimeupdate = () => {
-      console.log(`handleTimeupdate ${videoRef.currentTime} > ${timeForNextAppear.current}`);
+      // console.log(`handleTimeupdate ${videoRef.currentTime} > ${timeForNextAppear.current}`);
       if (timeForNextAppear.current > 0 && videoRef.currentTime > timeForNextAppear.current) {
-        console.log("pause");
+        // console.log("pause");
         timeForNextAppear.current = -1;
         videoRef.pause();
       }
