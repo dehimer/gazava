@@ -106,7 +106,7 @@ const StartFinish = () => {
             <>
               <TopPanel>
                 <Question>
-                  {i18n["start-screen-label"]}
+                  <div dangerouslySetInnerHTML={{__html: i18n["start-screen-label"]}} />
                 </Question>
               </TopPanel>
               <BottomPanel>
