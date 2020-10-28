@@ -12,15 +12,15 @@ export default Logotypes;
 const LogoTop = styled.img`
   position: absolute;
   top: -40px;
-  right: -10px;
-  max-height: 250px;
-  max-width: 250px;
+  right: -80px;
+  max-height: 400px;
+  max-width: 400px;
 `;
 
 const LogoBottom = styled.img`
   position: absolute;
   right: 60px;
   bottom: 20px;
-  max-height: 80px;
-  max-width: 80px;
+  max-height: 130px;
+  max-width: 130px;
 `;
