@@ -19,13 +19,18 @@ const Wrapper = styled.div`
   cursor: pointer;
   
   align-items: center;
-  padding: 5px;
+  padding: 5px 10px;
   user-select: none;
+  min-height: 30px;
+  
+  :hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 `;
 
 const Square = styled.div`
   box-sizing: border-box;
-  border: 4px solid crimson;
+  border: 2px solid crimson;
   background-color: ${({ selected }) => selected ? "crimson" : "none"};
   width: 20px;
   height: 20px;

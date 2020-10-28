@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
+import data from "../../data.json";
+import i18n from "../../constants/i18n";
+
 import Roads from "../Roads";
 import Button from "../common/Button";
 import Background from "./Background";
 import Logotypes from "./Logotypes";
 
-import i18n from "../../constants/i18n";
-import data from "../../data.json";
+import Panel from "../common/Panel";
 import Header from "../common/Header";
 
 const StartFinish = () => {
@@ -32,26 +34,33 @@ const StartFinish = () => {
   return (
     <Wrapper>
       <Background finished={finished} />
-      <Panel>
+
         {started
           ? (
-            <Roads
-              roads={roads}
-              finished={finished}
-              onFinish={handleFinishClick}
-              onRestart={handleRestartClick}
-            />
+            <StyledPanel>
+              <Roads
+                roads={roads}
+                finished={finished}
+                onFinish={handleFinishClick}
+                onRestart={handleRestartClick}
+              />
+            </StyledPanel>
           )
           : (
             <>
-              <Question>{i18n["start-screen-label"]}</Question>
-              <Button onClick={handleStartClick}>
-                {i18n.start}
-              </Button>
+              <TopPanel>
+                <Question>
+                  {i18n["start-screen-label"]}
+                </Question>
+              </TopPanel>
+              <BottomPanel>
+                <Button onClick={handleStartClick}>
+                  {i18n.start}
+                </Button>
+              </BottomPanel>
             </>
           )
         }
-      </Panel>
       <Logotypes />
     </Wrapper>
   )
@@ -64,20 +73,28 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const Panel = styled.div`
+const TopPanel = styled(Panel)`
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 22vh;
+`;
+
+const BottomPanel = styled(Panel)`
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  min-height: 120px;
+  padding-top: 10px;
+`;
+
+const StyledPanel = styled(Panel)`
   position: absolute;
   min-height: 80vh;
   width: 100%;
   left: 0;
   bottom: 0;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.5);
-  padding-bottom: 10px;  
 `;
 
 const Question = styled(Header)`
