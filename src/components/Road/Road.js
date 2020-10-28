@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 import StoppingPlacesSelect from "./StoppingPlacesSelect";
+import Places from "./Places";
 
-const RoadSelect = ({ road }) => {
+const Road = ({ road }) => {
   const [driving, setDriving] = React.useState(false);
   const [stoppingPlaces, setStoppingPlaces] = React.useState([]);
+  const places = road.stages;
 
   const handleStoppingPlacesSelect = (places) => {
-    console.log("handleStoppingPlacesSelect");
-    console.log(places);
     setStoppingPlaces(places);
     setDriving(true);
   }
@@ -18,10 +18,15 @@ const RoadSelect = ({ road }) => {
     <Wrapper>
       {
         driving
-          ? <div>Video</div>
+          ? (
+            <Places
+              allPlaces={places}
+              initiallyLeftPlaces={stoppingPlaces}
+            />
+          )
           : (
             <StoppingPlacesSelect
-              places={road.stages}
+              places={places}
               onSelect={handleStoppingPlacesSelect}
             />
           )
@@ -30,7 +35,7 @@ const RoadSelect = ({ road }) => {
   );
 }
 
-export default RoadSelect;
+export default Road;
 
 const Wrapper = styled.div`
   height: 100%;
