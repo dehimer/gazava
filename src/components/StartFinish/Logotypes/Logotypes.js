@@ -11,7 +11,7 @@ export default Logotypes;
 
 const LogoTop = styled.img`
   position: absolute;
-  top: -40px;
+  top: -80px;
   right: -80px;
   max-height: 400px;
   max-width: 400px;
