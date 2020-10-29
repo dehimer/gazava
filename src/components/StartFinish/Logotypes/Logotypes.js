@@ -17,7 +17,7 @@ const LogoTop = styled.img`
   max-width: 400px;
   
   @media(max-width: 850px) {
-    top: -40px;
+    top: -60px;
     right: -40px;
     max-height: 250px;
     max-width: 250px;
