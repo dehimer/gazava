@@ -156,6 +156,10 @@ const BottomPanel = styled(Panel)`
   @media(max-width: 850px) {
     min-height: 80px;
   }
+  
+  @media(max-width: 700px) {
+    min-height: 50px;
+  }
 `;
 
 const Question = styled(Header)`

@@ -118,6 +118,7 @@ const Places = ({
                   }
                   unvisitedPlaces={unvisitedPlaces}
                   onSelect={handleAdditionalPlacesSelect}
+                  hideFinish={leftAttempt !== 1}
                   onFinishClick={handleFinishClick}
                 />
               )

@@ -9,6 +9,7 @@ import Header from "../../../common/Header";
 const AdditionalPlacesSelect = ({
   caption,
   unvisitedPlaces,
+  hideFinish = false,
   onFinishClick,
   onSelect
 }) => {
@@ -29,9 +30,11 @@ const AdditionalPlacesSelect = ({
           <StyledButton onClick={handleAnotherOptionButton}>
             {i18n["select-another-options"]}
           </StyledButton>
-          <Button onClick={onFinishClick}>
-            {i18n["to-finish"]}
-          </Button>
+          {!hideFinish && (
+            <Button onClick={onFinishClick}>
+              {i18n["to-finish"]}
+            </Button>
+          )}
         </Controls>
       </>
     );

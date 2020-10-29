@@ -16,9 +16,9 @@ const Road = ({
   const [disabled, setDisabled] = React.useState(true);
 
   const handlePlacesSelect = (places) => {
-    videoRef.play();
     setStoppingPlaces(places);
     setDriving(true);
+    videoRef.play();
   };
 
 
