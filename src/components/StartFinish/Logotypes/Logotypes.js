@@ -22,6 +22,10 @@ const LogoTop = styled.img`
     max-height: 250px;
     max-width: 250px;
   }
+  
+  @media(max-width: 700px) {
+    right: -50px;
+  }
 `;
 
 const LogoBottom = styled.img`
@@ -35,6 +39,11 @@ const LogoBottom = styled.img`
     right: 35px;
     bottom: 10px;
     max-height: 65px;
-    max-width: 650px;
+    max-width: 65px;
+  }
+  
+  @media(max-width: 700px) {
+    right: 35px;
+    bottom: 5px;
   }
 `;

@@ -78,12 +78,12 @@ const SmallerHeader = styled(Header)`
   
   @media(max-width: 850px) {
     font-size: 20px;
-    padding: 0 100px;
+    padding-right: 100px;
   }
   
   @media(max-width: 700px) {
     font-size: 18px;
-    padding: 0 130px;
+    padding-right: 130px;
   }
 `;
 
