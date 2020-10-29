@@ -77,8 +77,13 @@ const SmallerHeader = styled(Header)`
   text-align: center;
   
   @media(max-width: 850px) {
+    font-size: 20px;
+    padding: 0 100px;
+  }
+  
+  @media(max-width: 700px) {
     font-size: 18px;
-    padding: 0 120px;
+    padding: 0 130px;
   }
 `;
 
