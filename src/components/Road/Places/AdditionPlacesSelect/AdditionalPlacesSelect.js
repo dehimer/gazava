@@ -56,9 +56,13 @@ const AdditionalPlacesSelect = ({
       onSelect={handlePlacesSelect}
       buttonText={i18n.continue}
     >
-      <FinishButton onClick={onFinishClick}>
-        {i18n["to-finish-fast"]}
-      </FinishButton>
+      {
+        !hideFinish && (
+          <FinishButton onClick={onFinishClick}>
+            {i18n["to-finish-fast"]}
+          </FinishButton>
+        )
+      }
     </PlacesSelect>
   )
 }
